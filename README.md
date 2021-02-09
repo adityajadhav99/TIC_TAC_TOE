@@ -1,2 +1,2 @@
 # TIC_TAC_TOE
-Simulates TIC_TAC_TOE game 
+Simulates the famous TIC-TAC-TOE game 
