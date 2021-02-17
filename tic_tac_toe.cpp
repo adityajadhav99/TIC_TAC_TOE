@@ -6,6 +6,7 @@ char board[3][3];
 char player[2] = {'X' , 'O'};
 char winner;
 
+// show_config() will visualize the game board
 void show_config(void){
     for (int i = 0; i < N; i++)
     {
@@ -30,7 +31,8 @@ void show_config(void){
     }   
 }
 
-
+// checkWindir(dir,player) will check the current configuration of the board and return a boolean value of 1 if the player has won
+// it checks in four directions horizontal, vertical, diagonal, reverse diagonal.
 bool checkWindir(int dir,char player){
     int  s,t;
     for (int i = 0; i < N; i++)
@@ -67,6 +69,7 @@ bool checkWindir(int dir,char player){
     return false;
 }
 
+// checkWin() checks the board and returns a boolean value 1 for a win
 bool checkWin(){
     for (int dir = 1;dir<5;dir++){
         for(int p = 0; p<2 ; p++){
@@ -79,6 +82,7 @@ bool checkWin(){
     return false;
 }
 
+// checkLegal(i,j) check whether the input given by the user is legal
 bool checkLegal(int i, int j){
     if (i>3 || i<1 || j>3 || j<1)
     {
@@ -91,10 +95,12 @@ bool checkLegal(int i, int j){
     return false;
 }
 
+// putSymbol(i,j,char C) puts the corresponding symbol on the game board
 void putSymbol(int i, int j, char C){
     board[i-1][j-1] = C;
 }
 
+// checks whether the game has drawn
 bool checkDraw(){
     for (int i = 0; i < N; i++)
     {
@@ -109,6 +115,7 @@ bool checkDraw(){
    return true; 
 }
 
+// the main function starts here
 int main(){
     string PLAYERS[2];
     cout<<"WELCOME TO THE TIC-TAC-TOE COMPETITION !!!!!!!!\nBelow you will see a board and you have to tell where you want to place the sign.\nThe first one to complete his sign in a row or column or a diagonal will win!!!"<<endl;
@@ -117,7 +124,7 @@ int main(){
     
    int p = 0;
    int i , j;
-    while (checkWin() != 1)
+    while (checkWin() != 1) //This loop runs till someone wins or match is drawn
     {
         cout<<"\n";
         show_config();
